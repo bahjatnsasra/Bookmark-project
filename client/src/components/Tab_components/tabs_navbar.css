@@ -1,0 +1,41 @@
+.tabs_navbar {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: lightgray;
+    color: #fff;
+}
+
+.tabs_navbar a {
+    margin-top: 10px;
+    margin-left: 10px;
+    color: darkgray;
+    text-decoration: none;
+    margin-right: 16px;
+    font-size: 15px;
+    color:black;
+    
+    
+}
+
+
+.mainTitle{
+    font-weight: bold;
+}
+
+.budget{
+    margin-left: 1050px;
+}
+
+.searchBar{
+    height: 20px;
+    width: 250px;
+    margin-left: 20px;
+    border-radius: 10px;
+    box-shadow: inset;
+    outline: none;
+	border: none;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    font-size: 15px;
+}
