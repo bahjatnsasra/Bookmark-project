@@ -6,7 +6,7 @@ import './categories.css'
 function Categories({categories}) {
     return (
         <div className='categoriesContainer' >
-            {categories.map(c => <Category category = {c.categoryName}/>)}
+            {categories.map(c => <Category categories = {categories} category = {c.categoryName}/>)}
         </div>
     )
 }

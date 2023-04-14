@@ -9,7 +9,7 @@ const bookmarkUtils = require('../utils/bookmark_utils')
 
 
 
-router.post('/tab',async function (req,res) {
+router.post('/tabs',async function (req,res) {
     let tab = new Tab(req.body)
     await tabUtils.createMainTab()
     let doesExist = await tabUtils.doesExist(tab)
@@ -49,6 +49,14 @@ router.post('/bookmark',async function (req,res) {
     res.send(newBookmark)
 })
 
+
+router.delete('/bookmark',async function (req,res) {
+    let category = req.body.category
+    let bookmarkId = req.body.Id
+    await Category.findOneAndUpdate({ categoryName: category },{ $pull: { "bookmarks": bookmarkId } })
+    await Bookmark.findByIdAndDelete({ _id: bookmarkId })
+})
+
 router.get('/bookmarks/:categoryName', async function (req,res) {
     let category = req.params.categoryName
     let bookmarks = (await Category.find({ categoryName: category }).select({"_id": 0}).populate("bookmarks").exec())[0].bookmarks
@@ -62,9 +70,12 @@ router.get('/categories', async function (req,res) {
 
 router.get('/categories/:tabName', async function (req,res) {
     let tab = req.params.tabName
-    let categories = (await Tab.find({ tabName: tab }).select({"_id": 0}).populate("categories").exec())[0]
-    res.send(categories)
+    let categoriesData = (await Tab.find({ tabName: tab }).select({"_id": 0}).populate("categories").exec())[0]
+    res.send(categoriesData.categories)
 })
+
+
+
 
 
 

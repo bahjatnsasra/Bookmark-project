@@ -4,20 +4,20 @@ import React , {useState , useEffect} from 'react';
 import TabsNav from './components/Tab_components/tabs_navbar'
 import ServiceNav from './components/Tab_components/service_navbar'
 import Tab from './components/Tab_components/Tab'
-import Test from './components/Category_components/test'
 
 
 
 
 function App() {
-  let [tabsData,setTabsData] = useState([])
+  const [tabsData,setTabsData] = useState([])
   useEffect(() => {
     fetch("/tabs")
     .then(tabs => tabs.json())
     .then(data => {setTabsData(data)})
-  },[])
+  },[tabsData])
 
-  let [tabName,setTabName] = useState('')
+
+  const [tabName,setTabName] = useState('')
   function updateTabName(tab) {
     let newTabName = tab
     setTabName(newTabName)
@@ -27,8 +27,9 @@ function App() {
   return (
     <Router>
       <TabsNav tabs = {tabsData} updateTabName = {updateTabName}/>
-      <ServiceNav/>
+      <ServiceNav tabs = {tabsData} />
       <Routes>
+        <Route path={`/Main`} element={<Tab tab = {'Main'}/>} />
         <Route path={`/${tabName}`} element={<Tab tab = {tabName}/>} />
       </Routes>
     </Router>

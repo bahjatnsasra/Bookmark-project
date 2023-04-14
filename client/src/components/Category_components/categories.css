@@ -7,21 +7,9 @@
     font-family: Open Sans, sans-serif;
 }
 
-.categoryContainer{
-    display:inline-block;
-    width: 250px;
-    margin-top: 10px;
-    margin-left: 10px;
-    background-color: #FFFFFF;
-    padding: 20px;
-}
 
-.bookmark-list {
-    width: 100%;
-    height: fit-content;
-    margin: 0;
-    padding: 0;
-}
+
+
 
 .bookmarkContainer{
     width: 250px;
@@ -47,3 +35,6 @@ li:hover {
     text-decoration: none;
     color: gray
 }
+
+
+

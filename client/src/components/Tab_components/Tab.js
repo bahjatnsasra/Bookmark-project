@@ -3,17 +3,17 @@ import Categories from '../Category_components/categories'
 
 function Tab({tab}) {
 
-    let [tabData,setTabData] = useState([])
+    let [categories,setCategories] = useState([])
     useEffect(() => {
         fetch(`/categories/${tab}`)
         .then(categories => categories.json())
-        .then(data => {setTabData(data)})
-    },[tab])
+        .then(data => {setCategories(data)})
+    },[categories])
 
-    if (!tabData.categories) {
+    if (!categories) {
         return <div>loading...</div>
     }else{
-        return <div><Categories categories = {tabData.categories}/></div>
+        return <div><Categories categories = {categories}/></div>
     }
 }
 

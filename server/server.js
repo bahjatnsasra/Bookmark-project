@@ -1,5 +1,6 @@
 const express = require('express')
 const tapApi = require('./routes/tapAndCategoryApi')
+const dataBaseManager = require('./utils/database_manager')
 
 const app = express()
 
@@ -13,7 +14,7 @@ app.use(function (req, res, next) {
 
 app.use(express.json())
 app.use(express.urlencoded({extended : false}))
-
+dataBaseManager.connect()
 app.use('/',tapApi)
 
 

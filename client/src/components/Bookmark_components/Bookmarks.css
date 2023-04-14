@@ -1,0 +1,29 @@
+
+.bookmark-list {
+    
+    width: 100%;
+    height: fit-content;
+    margin: 0;
+    padding: 0;
+}
+
+li{
+    position: relative;
+}
+li:hover { background-color:lightgray; }
+
+
+.deleteBookmark{
+    position: absolute;
+    width: 20px;
+    right: 0;
+    bottom: 5px;
+    margin-bottom: 7px;
+    background-color: white;
+    border-radius: 5px;
+    border-width: 0.5px;
+}
+
+.deleteBookmark:hover{
+    background-color:lightcoral;
+}

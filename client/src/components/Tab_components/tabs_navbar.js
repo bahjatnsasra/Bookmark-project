@@ -2,13 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './tabs_navbar.css'
 
-let mockTabs = [ 
-    {tabName : "Recipes"},
-    {tabName : "Work"},
-    {tabName : "Personal"},
-    {tabName : "Main"},
-    {tabName : "Online shops"}
-]
+
 
 function creatNavLink(tab,updateTabName) {
     return (
