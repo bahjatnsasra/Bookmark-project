@@ -17,7 +17,6 @@ router.delete('/',async function (req,res) {
     let category = req.body.category
     let bookmarkId = req.body.Id
     bookmarkUtils.deleteBookmark(category,bookmarkId)
-
 })
 
 router.get('/:categoryName', async function (req,res) {

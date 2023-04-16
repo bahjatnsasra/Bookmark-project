@@ -6,7 +6,6 @@ const tabUtils = require('../utils/tab_utils')
 
 
 router.post('/',async function (req,res) {
-    console.log(req.body);
     let newCategory = await categoryUtils.createCategory(req.body)
     let doesExist = await categoryUtils.doesExist(newCategory)
     if (!doesExist) {

@@ -1,8 +1,9 @@
 const Tab = require('../models/tab')
+const categoryUtils = require('../utils/category_utils')
+
 
 
 async function addToTab(tabName,category) {
-    console.log(tabName);
     await Tab.findOneAndUpdate({ tabName: tabName },{ "$push": { "categories": category } })
 }
 
@@ -20,8 +21,11 @@ async function createTab(tabData) {
     return newTab
 }
 
-async function deleteTab(tab) {
-    await Tab.findOneAndDelete({tabName : tab})
+async function deleteTab(tabName) {
+let tab =(await Tab.find({tabName : tabName}).select({ "_id": 0}).populate("categories").exec())[0]
+    await categoryUtils.deleteCategories(tab.categories)
+    await Tab.findOneAndUpdate({tabName : tabName},{$set : {'categories': []}})
+    await Tab.findOneAndDelete({tabName : tabName})
 }
 
 async function getAllTabs() {

@@ -4,7 +4,12 @@ const LOGO_API = "https://api.kickfire.com/logo?website="
 
 
 async function createBookmark(bookmarkInfo) {
-    let icon = `${LOGO_API}${bookmarkInfo.name}.com`
+    function extractRootDomain (url){
+        var secondLevelDomain = url.split('.').reverse()[1].split('/').reverse()[0]
+        return secondLevelDomain
+    };
+    let SLD = extractRootDomain(bookmarkInfo.link)
+    let icon = `${LOGO_API}${SLD}.com`
     bookmarkInfo.icon = icon
     let newBookmark = new Bookmark(bookmarkInfo)
     return newBookmark
@@ -20,13 +25,19 @@ async function deleteBookmark(category,bookmarkId) {
 }
 
 async function getBookmarks(category) {
-    let bookmarks = (await Category.find({ categoryName: category }).select({"_id": 0}).populate("bookmarks").exec())[0].bookmarks
-    return bookmarks
+    let categoryData = await Category.find({ categoryName: category }).select({"_id": 0}).populate("bookmarks").exec()
+    if (categoryData.length > 0 && categoryData[0].bookmarks.length > 0) {
+        let bookmarks = categoryData[0].bookmarks
+        return bookmarks
+    }else{
+        return []
+    }
+    
 }
 
 module.exports = {
     createBookmark,
     addNewBookmark,
     deleteBookmark,
-    getBookmarks
+    getBookmarks,
 }

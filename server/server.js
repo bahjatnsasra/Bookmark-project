@@ -17,11 +17,10 @@ app.use(function (req, res, next) {
 app.use(express.json())
 app.use(express.urlencoded({extended : false}))
 dataBaseManager.connect()
+
 app.use('/tabs',tapApi)
 app.use('/categories',categoriesApi)
 app.use('/bookmarks',bookmarksApi)
-
-
 
 
 const port = 5000  

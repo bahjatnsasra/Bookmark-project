@@ -1,5 +1,7 @@
 const Category = require('../models/category')
 const Tab = require('../models/tab')
+const bookmarkUtils = require('../utils/bookmark_utils')
+
 
 
 async function doesExist(category) {
@@ -20,8 +22,20 @@ async function getCategories(tab) {
     return categories
 }
 
+
+async function deleteCategories(categories) {
+    for (const category of categories) {
+        let categoryData = await Category.findById({ _id: category._id })
+        for (const bookmark of categoryData.bookmarks) {
+            bookmarkUtils.deleteBookmark(categoryData.categoryName,bookmark._id)
+        }
+        await Category.findOneAndDelete({categoryName : category.categoryName})
+    }
+}   
+
 module.exports = {
     doesExist,
     createCategory,
-    getCategories
+    getCategories,
+    deleteCategories
 }
