@@ -1,12 +1,26 @@
 .tabs_navbar {
     display: flex;
     align-items: center;
-    padding: 20px;
     background-color: lightgray;
     color: #fff;
 }
 
-.tabs_navbar a {
+.nav_list{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+}
+
+.navbar-link{
+    float: left;
+    height: 100%;
+}
+
+
+.navbar-link a {
+    position: relative;
     margin-top: 10px;
     margin-left: 10px;
     color: darkgray;
@@ -14,8 +28,19 @@
     margin-right: 16px;
     font-size: 15px;
     color:black;
-    
-    
+}
+
+.deleteTap_btn{
+    position: absolute;
+    display:none;
+    background-color: lightgray;
+    outline: none;
+    border: none;
+    top: 0;
+}
+
+.navbar-link:hover .deleteTap_btn{ 
+    display:block;
 }
 
 

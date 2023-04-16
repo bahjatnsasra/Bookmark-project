@@ -14,7 +14,7 @@ function BookmarkForm({category,onClose}) {
 
     function addNewBookmark() {
         if (bookmark.name != '') {
-            fetch('/bookmark', {
+            fetch('/bookmarks', {
                 method: 'POST',
                 body: JSON.stringify(bookmark),
                 headers: {

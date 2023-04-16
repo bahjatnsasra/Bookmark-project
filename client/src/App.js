@@ -24,12 +24,14 @@ function App() {
   }
 
 
+
+
   return (
     <Router>
       <TabsNav tabs = {tabsData} updateTabName = {updateTabName}/>
       <ServiceNav tabs = {tabsData} />
       <Routes>
-        <Route path={`/Main`} element={<Tab tab = {'Main'}/>} />
+        <Route path={`/`} element={<Tab tab = {'Main'}/>} />
         <Route path={`/${tabName}`} element={<Tab tab = {tabName}/>} />
       </Routes>
     </Router>

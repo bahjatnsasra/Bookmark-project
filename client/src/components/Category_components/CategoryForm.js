@@ -11,7 +11,7 @@ function CategoryForm({tabs, onClose }) {
 
     function addNewCategory() {
         if (category.categoryName != '') {
-            fetch('/category', {
+            fetch('/categories', {
                 method: 'POST',
                 body: JSON.stringify(category),
                 headers: {

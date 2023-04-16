@@ -10,7 +10,7 @@ function Bookmarks({bookmarks,category}) {
             "Id" : bookmarkId,
             "category" : category
         }
-        fetch('/bookmark', {
+        fetch('/bookmarks', {
             method: 'DELETE',
             body: JSON.stringify(bookmark),
             headers: {
@@ -18,7 +18,6 @@ function Bookmarks({bookmarks,category}) {
             },
         })
     }
-    console.log(bookmarks);
     return (
         <ul class="bookmark-list">
             {bookmarks.map(b => <li><Bookmark bookmark = {b}/> <button onClick={() => deleteBookmark(b._id,category)} className='deleteBookmark'>X</button></li>)}
